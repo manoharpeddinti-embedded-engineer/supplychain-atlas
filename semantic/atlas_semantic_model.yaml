@@ -1,0 +1,38 @@
+name: supplychain_atlas
+description: Governed analytical contract for the SupplyChain Atlas copilot.
+tables:
+  - name: shipment_impact
+    base_table:
+      database: SUPPLYCHAIN_ATLAS
+      schema: CORE
+      table: V_CONTROL_TOWER
+    dimensions:
+      - name: shipment_id
+        expr: SHIPMENT_ID
+        data_type: TEXT
+      - name: risk_level
+        expr: RISK_LEVEL
+        data_type: TEXT
+      - name: supplier_name
+        expr: SUPPLIER_NAME
+        data_type: TEXT
+      - name: plant_name
+        expr: PLANT_NAME
+        data_type: TEXT
+      - name: part_name
+        expr: PART_NAME
+        data_type: TEXT
+    measures:
+      - name: at_risk_revenue
+        expr: SUM(TOTAL_REVENUE_AT_RISK)
+        data_type: NUMBER
+      - name: critical_shipments
+        expr: COUNT(DISTINCT CASE WHEN RISK_LEVEL = 'CRITICAL' THEN SHIPMENT_ID END)
+        data_type: NUMBER
+      - name: average_risk_score
+        expr: AVG(RISK_SCORE)
+        data_type: NUMBER
+verified_queries:
+  - name: highest_risk_shipments
+    question: Which shipments should be escalated first?
+    sql: SELECT SHIPMENT_ID, RISK_LEVEL, RISK_SCORE, TOTAL_REVENUE_AT_RISK FROM SUPPLYCHAIN_ATLAS.CORE.V_CONTROL_TOWER ORDER BY RISK_SCORE DESC, TOTAL_REVENUE_AT_RISK DESC LIMIT 10
