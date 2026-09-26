@@ -1,0 +1,15 @@
+SUPPLYCHAIN ATLAS — DEMO NARRATION (about 90 seconds)
+
+SupplyChain Atlas is a Snowflake-native resilience command center for supply-chain disruptions. It connects supplier reliability, parts, purchase orders, shipment events, IoT sensor data, plants, and customer orders in one governed ontology.
+
+On the Command Center, the live synthetic scenario shows 33 shipments and five critical disruptions. The key business metric is 40.2 million dollars of revenue exposure. Each row is not simply an alert: it connects the shipment, its risk score, the affected part and plant, the supplier, ETA, and customer revenue at risk.
+
+For example, SHP-0003 is a critical battery-module shipment from Apex Metals to Pune Assembly. Its risk score is 95. The application makes the escalation decision explainable through delay, sensor, and supplier-risk factors rather than relying on a black-box score.
+
+The supplier chart lets a manager see concentration of revenue exposure across Apex Metals, Northstar Components, and Pacific Precision. This helps prioritize supplier actions as well as individual shipment recovery.
+
+Now, in the What-if Lab, we select the critical shipment and model a carrier intervention. Recovering three days reduces projected risk from 95 to 80. This gives an operations manager a fast way to compare recovery options before committing resources.
+
+Finally, the Decision Receipt provides the evidence trail. The result is supported by SHIPMENTS, SENSOR_EVENTS, SUPPLIERS, and CUSTOMER_ORDERS through the governed V_CONTROL_TOWER view. Risk equals delay impact plus sensor anomaly impact plus supplier reliability impact.
+
+SupplyChain Atlas turns fragmented supply-chain signals into explainable, governed decisions. Snowpark calculates the risk pipeline, Snowflake views provide the controlled business surface, and Streamlit delivers an operational workflow that starts with disruption detection and ends with a prioritized, auditable action.
